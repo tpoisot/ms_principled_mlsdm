@@ -24,7 +24,6 @@ license: "CC BY"
 ## SDMs are an ML problem
 
 - probabilistic classifiers
-- optimal threshold for rangemap
 - see Beery for the same argument aimed at ML prac
 - can do ML even without doing DL
 - lots of practices from ML already, we suggest a broader guideline for what/how to adopt
@@ -52,6 +51,7 @@ license: "CC BY"
 
 ## Hyper-parameters and self-tuning models
 
+- optimal threshold for rangemap
 - show example of learning the threshold (can even be done with BIOCLIM)
 - how to tune many parameters at once?
 - overview of tech solutions, *e.g.* wrapping models in a tuning model
