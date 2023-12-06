@@ -48,7 +48,6 @@ license: "CC BY"
 
 -   review different folding techniques
 -   unambiguous recommendation about MCC over everything else
--   BUT examples with different acceptable biases for different uses
 
 Although there are recommendations about the optimal classifier to select, the reality of *why* we predict the distribution of the species can lead to justified departures from this standard, by selecting a model that is not optimal; which is to say, there may be models with the same value of MCC that have different suitability depending on the intent behind the modeling process. For example, consider the following confusion matrices:
 
