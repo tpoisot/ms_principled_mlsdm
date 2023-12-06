@@ -41,6 +41,8 @@ ul.task-list li input[type="checkbox"] {
   });
 </script>
 
+  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
 
 <meta name="citation_title" content="Interpretable machine learning practices for species distribution models">
 <meta name="citation_abstract" content="todo
@@ -134,7 +136,6 @@ ul.task-list li input[type="checkbox"] {
 <h2 class="anchored" data-anchor-id="sdms-are-an-ml-problem">SDMs are an ML problem</h2>
 <ul>
 <li>probabilistic classifiers</li>
-<li>optimal threshold for rangemap</li>
 <li>see Beery for the same argument aimed at ML prac</li>
 <li>can do ML even without doing DL</li>
 <li>lots of practices from ML already, we suggest a broader guideline for what/how to adopt</li>
@@ -155,21 +156,31 @@ ul.task-list li input[type="checkbox"] {
 <ul>
 <li>classification: balance v. imbalance</li>
 <li>accuracy paradox + colinearity + issues with the status of negatives</li>
+<li>ROC and PR</li>
 <li>review recommendations about number of background points – lead to classification extremely unbalanced</li>
+<li>elements from Becker et al.&nbsp;on how to validate with positive only</li>
 </ul>
 </section>
 <section id="cross-validation-and-model-evaluation" class="level2">
 <h2 class="anchored" data-anchor-id="cross-validation-and-model-evaluation">Cross-validation and model evaluation</h2>
 <ul>
-<li>elements from Becker et al.&nbsp;on how to validate with positive only</li>
 <li>review different folding techniques</li>
 <li>unambiguous recommendation about MCC over everything else</li>
 <li>BUT examples with different acceptable biases for different uses</li>
 </ul>
+<p>Although there are recommendations about the optimal classifier to select, the reality of <em>why</em> we predict the distribution of the species can lead to justified departures from this standard, by selecting a model that is not optimal; which is to say, there may be models with the same value of MCC that have different suitability depending on the intent behind the modeling process. For example, consider the following confusion matrices:</p>
+<p><span class="math display">\[
+C_1 = \begin{bmatrix}100 &amp; 2\\18 &amp; 100\end{bmatrix},\quad
+C_2 = \begin{bmatrix}100 &amp; 18\\2 &amp; 100\end{bmatrix},\quad
+C_3 = \begin{bmatrix}100 &amp; 10\\10 &amp; 100\end{bmatrix} \,.
+\]</span></p>
+<p>They have the exact same accuracy (0.91) and approximately the same MCC (0.83 for <span class="math inline">\(C_1\)</span> and <span class="math inline">\(C_2\)</span>, and 0.82 for <span class="math inline">\(C_3\)</span>). Yet they represent drastically different types of errors, with <span class="math inline">\(C_1\)</span> being biased towards false negatives, <span class="math inline">\(C_2\)</span> towards false positives, and <span class="math inline">\(C_3\)</span> being equally biased towards false positives/negatives. Depending on the question, the classifiers that these matrices represent would differ in their suitability. To monitor an invasive species, where missing a detection event is costly, <span class="math inline">\(C_2\)</span> would be more appropriate: its prediction that a species is absent are far more reliable. Conversely, to monitor a threatened or a rare species, where sampling sites outside of its distribution is a misallocation of effort, the classifier represented by <span class="math inline">\(C_1\)</span> would be more reliable: its positive recommendations are more trustworthy.</p>
+<p>This simplistic example highlights how even within a family of models with similar predictive performance, there can be variation in their suitability for a specific task. The point of cross-validation is to obtain the best model, but “best” is a relative notion that must be framed by domain knowledge about how the prediction is ultimately turned into actions.</p>
 </section>
 <section id="hyper-parameters-and-self-tuning-models" class="level2">
 <h2 class="anchored" data-anchor-id="hyper-parameters-and-self-tuning-models">Hyper-parameters and self-tuning models</h2>
 <ul>
+<li>optimal threshold for rangemap</li>
 <li>show example of learning the threshold (can even be done with BIOCLIM)</li>
 <li>how to tune many parameters at once?</li>
 <li>overview of tech solutions, <em>e.g.</em> wrapping models in a tuning model</li>
