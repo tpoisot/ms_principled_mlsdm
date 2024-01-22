@@ -21,11 +21,17 @@ keywords:
 license: "CC BY"
 ---
 
+## Introduction
+
+- overview of SDMs and what their uses are
+- type of data, type of output
+- known sources of biases
+-  recent uptick in interest for DL-based SDM suggest importance of ML methodology
+
 ## SDMs are an ML problem
 
 -   probabilistic classifiers
 -   see Beery for the same argument aimed at ML prac
--   can do ML even without doing DL
 -   lots of practices from ML already, we suggest a broader guideline for what/how to adopt
 -   in each section, introduce SDM concepts and map to ML vocabulary
 -   conclude each section on recommendations + nuance: when departing from ML best prac is acceptable
@@ -35,6 +41,7 @@ license: "CC BY"
 -   data transformation issues + can lead to leakage
 -   overview of data transformation practices in the literature
 -   problem when changing the scale of prediction
+- **Best practice 1:** strict train/predict separation (example of PCA or z-score)
 
 ## Imbalanced classification and the generation of background points
 
@@ -43,6 +50,7 @@ license: "CC BY"
 -   ROC and PR
 -   review recommendations about number of background points -- lead to classification extremely unbalanced
 -   elements from Becker et al. on how to validate with positive only
+- **Best practice 2:** validate/test balance
 
 ## Cross-validation and model evaluation
 
@@ -67,6 +75,7 @@ This simplistic example highlights how even within a family of models with simil
 -   show example of learning the threshold (can even be done with BIOCLIM)
 -   how to tune many parameters at once?
 -   overview of tech solutions, *e.g.* wrapping models in a tuning model
+- **Best practice X:** TK
 
 ## Interpretability of predictions
 
@@ -74,6 +83,7 @@ This simplistic example highlights how even within a family of models with simil
 -   overview of literature on policy based on ML
 -   framework: MTL declaration
 -   examples of mapping -- see the here be dragons paper
+- **Best practice X:** explanation v. variable importance
 
 ## Enabling what-if scenarios for predictive models
 
@@ -88,3 +98,7 @@ This simplistic example highlights how even within a family of models with simil
 -   nested models 2 (abundance require presence)
 
 ## Conclusions
+
+- adoption of best practices require only minimal changes to existing work
+- dual benefit of more robust work + easier interactions with ML community
+- identification of new tools (what ifs) can lead to new research questions for SDM users
